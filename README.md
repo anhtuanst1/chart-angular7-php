@@ -24,12 +24,12 @@ Datatables
 
 ## Install Chart Packages    
 
-npm install jqwidgets-scripts --save    
+`npm install jqwidgets-scripts --save`    
 
-angular-highcharts highcharts    npm i angular-highcharts highcharts    
+angular-highcharts highcharts `npm i angular-highcharts highcharts`    
 (https://www.npmjs.com/package/angular-highcharts)    
 
-jqwidgets-scripts    npm install jqwidgets-scripts --save    
+jqwidgets-scripts `npm install jqwidgets-scripts --save`    
 (https://www.jqwidgets.com/angular-components-documentation/documentation/angular-cli/angular-cli-jqxchart.htm)
 
 ## Development server
