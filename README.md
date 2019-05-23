@@ -22,6 +22,16 @@ Datatables
 `npm install @types/jquery --save-dev`    
 `npm install @types/datatables.net --save-dev`
 
+## Install Chart Packages    
+
+npm install jqwidgets-scripts --save    
+
+angular-highcharts highcharts    npm i angular-highcharts highcharts    
+(https://www.npmjs.com/package/angular-highcharts)    
+
+jqwidgets-scripts    npm install jqwidgets-scripts --save    
+(https://www.jqwidgets.com/angular-components-documentation/documentation/angular-cli/angular-cli-jqxchart.htm)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
