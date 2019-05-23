@@ -4,23 +4,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Setup Environment
 
-// Node-modules
-    npm install
+Node-modules  `npm install`
 
-// Bootstrap
-    npm install bootstrap --save
+Bootstrap  `npm install bootstrap --save`
 
-// Jquery
-    npm install jquery --save
+Jquery  `npm install jquery --save`
 
-// Dropify
-    npm install dropify --save
+Dropify  `npm install dropify --save`
 
-// Datatables
-    npm install datatables.net --save
-    npm install datatables.net-dt --save
-    npm install @types/jquery --save-dev
-    npm install @types/datatables.net --save-dev
+Datatables  
+`npm install datatables.net --save`    
+`npm install datatables.net-dt --save`    
+`npm install @types/jquery --save-dev`    
+`npm install @types/datatables.net --save-dev`
 
 ## Development server
 
