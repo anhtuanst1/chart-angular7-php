@@ -2,6 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
+## Setup Environment
+
+// Node-modules
+    npm install
+
+// Bootstrap
+    npm install bootstrap --save
+
+// Jquery
+    npm install jquery --save
+
+// Dropify
+    npm install dropify --save
+
+// Datatables
+    npm install datatables.net --save
+    npm install datatables.net-dt --save
+    npm install @types/jquery --save-dev
+    npm install @types/datatables.net --save-dev
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
