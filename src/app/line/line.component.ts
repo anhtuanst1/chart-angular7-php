@@ -9,15 +9,69 @@ export class LineComponent implements OnInit {
 
     ngOnInit() {}
 
-    sampleData: any[] = [
-        { Day: 'Monday', Running: 30, Swimming: 10, Cycling: 25, Goal: 40 },
-        { Day: 'Tuesday', Running: 25, Swimming: 15, Cycling: 10, Goal: 50 },
-        { Day: 'Wednesday', Running: 30, Swimming: 10, Cycling: 25, Goal: 60 },
-        { Day: 'Thursday', Running: 40, Swimming: 20, Cycling: 25, Goal: 40 },
-        { Day: 'Friday', Running: 45, Swimming: 20, Cycling: 25, Goal: 50 },
-        { Day: 'Saturday', Running: 30, Swimming: 20, Cycling: 30, Goal: 60 },
-        { Day: 'Sunday', Running: 20, Swimming: 30, Cycling: 10, Goal: 90 }
+    numberOnly(event): boolean {
+        const charCode = (event.which) ? event.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+    applyData() {
+        this.sampleData = JSON.parse(JSON.stringify(this.InputData));
+        this.valueAxis.maxValue = JSON.parse(JSON.stringify(this.max_value));
+        this.max_value = 100;
+    }
+
+    RootData: any[] = [
+        { Day: 'Monday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Tuesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Wednesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Thursday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Friday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Saturday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Sunday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 }
     ];
+
+    InputData = JSON.parse(JSON.stringify(this.RootData));
+    max_value = 0;
+
+    updateData(id, value): any{
+        var data = this.InputData;
+        if(this.max_value <= value){
+            this.max_value = Number(value) + 50;
+            console.log(this.max_value);
+        }
+        for (let idx in data) {
+            var day = data[idx].Day.toLowerCase( );
+            if(day.indexOf(id[0]) > -1){
+                console.log(' ---- 111 ');
+                switch(id[1]) {
+                    case "swimming":
+                        console.log(' ---- 222 ');
+                        data[idx].Swimming = value;
+                        break;
+                    case "running":
+                        console.log(' ---- 333 ');
+                        data[idx].Running = value;
+                        break;
+                    case "cycling":
+                        console.log(' ---- 444 ');
+                        data[idx].Cycling = value;
+                        break;
+                    case "goal":
+                        console.log(' ---- 555 ');
+                        data[idx].Goal = value;
+                        break;
+                }
+            }
+        }
+        this.InputData = data;
+    }
+
+    days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+    sampleData = JSON.parse(JSON.stringify(this.RootData));
     padding: any = { left: 10, top: 10, right: 15, bottom: 10 };
     titlePadding: any = { left: 90, top: 0, right: 0, bottom: 10 };
     getWidth() : any {
@@ -41,7 +95,7 @@ export class LineComponent implements OnInit {
     {
         unitInterval: 10,
         minValue: 0,
-        maxValue: 50,
+        maxValue: 100,
         title: { text: 'Time in minutes<br><br>' },
         labels: { horizontalAlignment: 'right' }
     };
@@ -66,6 +120,32 @@ export class LineComponent implements OnInit {
                 },
                 {
                     dataField: 'Running',
+                    symbolType: 'square',
+                    labels:
+                    {
+                        visible: true,
+                        backgroundColor: '#FEFEFE',
+                        backgroundOpacity: 0.2,
+                        borderColor: '#7FC4EF',
+                        borderOpacity: 0.7,
+                        padding: { left: 5, right: 5, top: 0, bottom: 0 }
+                    }
+                },
+                {
+                    dataField: 'Cycling',
+                    symbolType: 'square',
+                    labels:
+                    {
+                        visible: true,
+                        backgroundColor: '#FEFEFE',
+                        backgroundOpacity: 0.2,
+                        borderColor: '#7FC4EF',
+                        borderOpacity: 0.7,
+                        padding: { left: 5, right: 5, top: 0, bottom: 0 }
+                    }
+                },
+                {
+                    dataField: 'Goal',
                     symbolType: 'square',
                     labels:
                     {
