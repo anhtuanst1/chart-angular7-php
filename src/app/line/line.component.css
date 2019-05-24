@@ -2,7 +2,7 @@
     float:left;
 }
 #line-table {
-    margin: 27px;
+    margin: 20px;
     float:left;
     width:25%;
 }
@@ -11,4 +11,7 @@
 }
 .form-control {
     text-align: center;
+}
+.apply-button {
+    margin-bottom: 10px;
 }

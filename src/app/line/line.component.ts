@@ -10,7 +10,6 @@ export class LineComponent implements OnInit {
     ngOnInit() {}
 
     numberOnly(event): boolean {
-        var id = event['target']['id'].split("-", 2);
         const charCode = (event.which) ? event.which : event.keyCode;
         if (charCode > 31 && (charCode < 48 || charCode > 57)) {
             return false;
@@ -18,8 +17,31 @@ export class LineComponent implements OnInit {
         return true;
     }
 
+    applyData() {
+        this.sampleData = JSON.parse(JSON.stringify(this.InputData));
+        this.valueAxis.maxValue = JSON.parse(JSON.stringify(this.max_value));
+        this.max_value = 100;
+    }
+
+    RootData: any[] = [
+        { Day: 'Monday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Tuesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Wednesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Thursday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Friday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Saturday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
+        { Day: 'Sunday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 }
+    ];
+
+    InputData = JSON.parse(JSON.stringify(this.RootData));
+    max_value = 0;
+
     updateData(id, value): any{
-        var data = this.sampleData;
+        var data = this.InputData;
+        if(this.max_value <= value){
+            this.max_value = Number(value) + 50;
+            console.log(this.max_value);
+        }
         for (let idx in data) {
             var day = data[idx].Day.toLowerCase( );
             if(day.indexOf(id[0]) > -1){
@@ -44,20 +66,12 @@ export class LineComponent implements OnInit {
                 }
             }
         }
-        this.sampleData = data;
+        this.InputData = data;
     }
 
     days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-    sampleData: any[] = [
-        { Day: 'Monday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Tuesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Wednesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Thursday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Friday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Saturday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Sunday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 }
-    ];
+    sampleData = JSON.parse(JSON.stringify(this.RootData));
     padding: any = { left: 10, top: 10, right: 15, bottom: 10 };
     titlePadding: any = { left: 90, top: 0, right: 0, bottom: 10 };
     getWidth() : any {
