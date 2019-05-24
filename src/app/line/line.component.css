@@ -1,0 +1,14 @@
+#line-chart {
+    float:left;
+}
+#line-table {
+    margin: 27px;
+    float:left;
+    width:25%;
+}
+.header-table {
+    width: 20%;
+}
+.form-control {
+    text-align: center;
+}
