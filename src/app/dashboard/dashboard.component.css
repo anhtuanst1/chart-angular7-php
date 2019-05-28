@@ -5,3 +5,17 @@
 .grid-pad {
     padding: 10px 0;
 }
+#line-table {
+    margin: 20px;
+    float:left;
+    width:25%;
+}
+.header-table {
+    width: 20%;
+}
+.form-control {
+    text-align: center;
+}
+.apply-button {
+    margin-bottom: 10px;
+}

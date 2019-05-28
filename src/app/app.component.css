@@ -10,6 +10,9 @@ h1 {
     padding-top: 0;
   }
   nav a {
+    width: 100px;
+    text-align: center;
+    margin-left: 5px;
     padding: 5px 10px;
     text-decoration: none;
     margin-top: 10px;
