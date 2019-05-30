@@ -5,3 +5,6 @@
 .grid-pad {
     padding: 10px 0;
 }
+.dashboard-header {
+    float: left;
+}

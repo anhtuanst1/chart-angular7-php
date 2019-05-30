@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'chart-angular7-php';
+  activeTab = '';
+
+  chart_menus: any[] = ['dashboard', 'line'];
+
+  SwitchTab(activeTab){
+    this.activeTab = activeTab;
+  }
+  
 }

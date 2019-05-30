@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SendDataService } from '../../services/send-data.service';
 
 @Component({
     selector: 'app-line',
@@ -7,23 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LineComponent implements OnInit {
 
-    ngOnInit() {}
-
-    numberOnly(event): boolean {
-        const charCode = (event.which) ? event.which : event.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            return false;
-        }
-        return true;
+    constructor(private data: SendDataService) { }
+    
+    ngOnInit() {
+        this.data.currentData.subscribe(data =>  this.sampleData = data);
     }
-
-    applyData() {
-        this.sampleData = JSON.parse(JSON.stringify(this.InputData));
-        this.valueAxis.maxValue = JSON.parse(JSON.stringify(this.max_value));
-        this.max_value = 100;
-    }
-
-    RootData: any[] = [
+    
+    sampleData: any [] = [
         { Day: 'Monday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
         { Day: 'Tuesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
         { Day: 'Wednesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
@@ -33,52 +24,12 @@ export class LineComponent implements OnInit {
         { Day: 'Sunday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 }
     ];
 
-    InputData = JSON.parse(JSON.stringify(this.RootData));
-    max_value = 0;
-
-    updateData(id, value): any{
-        var data = this.InputData;
-        if(this.max_value <= value){
-            this.max_value = Number(value) + 50;
-            console.log(this.max_value);
-        }
-        for (let idx in data) {
-            var day = data[idx].Day.toLowerCase( );
-            if(day.indexOf(id[0]) > -1){
-                console.log(' ---- 111 ');
-                switch(id[1]) {
-                    case "swimming":
-                        console.log(' ---- 222 ');
-                        data[idx].Swimming = value;
-                        break;
-                    case "running":
-                        console.log(' ---- 333 ');
-                        data[idx].Running = value;
-                        break;
-                    case "cycling":
-                        console.log(' ---- 444 ');
-                        data[idx].Cycling = value;
-                        break;
-                    case "goal":
-                        console.log(' ---- 555 ');
-                        data[idx].Goal = value;
-                        break;
-                }
-            }
-        }
-        this.InputData = data;
-    }
-
-    days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
-    sampleData = JSON.parse(JSON.stringify(this.RootData));
     padding: any = { left: 10, top: 10, right: 15, bottom: 10 };
     titlePadding: any = { left: 90, top: 0, right: 0, bottom: 10 };
     getWidth() : any {
         if (document.body.offsetWidth < 850) {
             return '90%';
         }
-        
         return 850;
     }
 

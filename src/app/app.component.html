@@ -1,7 +1,10 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/line">Line</a>
-</nav>
-<br>
-<router-outlet></router-outlet>
+<div class="header-page">
+  <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/{{menu}}" *ngFor="let menu of chart_menus" (click)="SwitchTab(menu)">{{menu}}</a>
+      <div class="tab-content">
+        <router-outlet></router-outlet>
+        <app-table-input-data *ngIf="activeTab!='dashboard'"></app-table-input-data>
+      </div>
+  </nav>
+</div>
