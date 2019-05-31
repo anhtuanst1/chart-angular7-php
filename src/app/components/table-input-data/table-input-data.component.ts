@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SendDataService } from '../../services/send-data.service';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-table-input-data',
@@ -27,6 +28,25 @@ export class TableInputDataComponent implements OnInit {
     // this.sampleData = JSON.parse(JSON.stringify(this.InputData));
     // this.valueAxis.maxValue = JSON.parse(JSON.stringify(this.max_value));
     this.max_value = 100;
+    this.downloadFile(this.sampleData);
+  }
+
+  downloadFile(data: any) {
+    const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
+    const header = Object.keys(data[0]);
+    let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    csv.unshift(header.join(','));
+    let csvArray = csv.join('\r\n');
+
+    var a = document.createElement('a');
+    var blob = new Blob([csvArray], {type: 'text/csv' }),
+    url = window.URL.createObjectURL(blob);
+
+    a.href = url;
+    a.download = "myFile.csv";
+    a.click();
+    window.URL.revokeObjectURL(url);
+    a.remove();
   }
 
   days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];

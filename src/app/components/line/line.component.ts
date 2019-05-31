@@ -14,15 +14,7 @@ export class LineComponent implements OnInit {
         this.data.currentData.subscribe(data =>  this.sampleData = data);
     }
     
-    sampleData: any [] = [
-        { Day: 'Monday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Tuesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Wednesday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Thursday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Friday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Saturday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 },
-        { Day: 'Sunday', Running: 0, Swimming: 0, Cycling: 0, Goal: 0 }
-    ];
+    sampleData: any [];
 
     padding: any = { left: 10, top: 10, right: 15, bottom: 10 };
     titlePadding: any = { left: 90, top: 0, right: 0, bottom: 10 };

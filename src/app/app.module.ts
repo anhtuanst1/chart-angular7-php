@@ -13,6 +13,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LineComponent } from './components/line/line.component';
 import { jqxChartComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxchart';
 import { TableInputDataComponent } from './components/table-input-data/table-input-data.component';
+import { CircleComponent } from './components/circle/circle.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TableInputDataComponent } from './components/table-input-data/table-inp
     DashboardComponent,
     LineComponent,
     jqxChartComponent,
-    TableInputDataComponent
+    TableInputDataComponent,
+    CircleComponent
   ],
   imports: [
     BrowserModule,

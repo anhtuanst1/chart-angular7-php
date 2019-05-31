@@ -1,5 +1,8 @@
 <div class="header-page">
-  <h1>{{title}}</h1>
+  <div class="col-md-12">
+    <h1 class="col-md-11">{{title}}</h1>
+    <a href="javascript:void(0);" (click)="toggleMenu()"><img #toggleButton class="logout-icon" src="../assets/image/logout.png" /></a>
+    <div class="col-sets-cot" *ngIf="isMenuOpen"><p #menu>Logout</p></div>
   <nav>
     <a routerLink="/{{menu}}" *ngFor="let menu of chart_menus" (click)="SwitchTab(menu)">{{menu}}</a>
       <div class="tab-content">
